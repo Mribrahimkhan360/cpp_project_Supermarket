@@ -162,7 +162,7 @@ m:
 
     if(!data)
     {
-        data.open("database.txt",iso::app|iso::out);
+        std::ofstream data("database.txt", std::ios::app | std::ios::out);
         data<<"  "<<pcode<<"  "<<pname<<"  "<<dis<<"\n";
         data.close();
     }
@@ -186,7 +186,7 @@ m:
     }
     else
     {
-        data.open("database.txt",iso::app|iso::out);
+        std::ofstream data("database.txt", std::ios::app | std::ios::out);
         data<<"  "<<pcode<<"  "<<pname<<"  "<<dis<<"\n";
         data.close();
     }
