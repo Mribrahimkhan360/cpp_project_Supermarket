@@ -193,6 +193,103 @@ void shopping ::add()
 cout<<"\n\n\t\t Record inserted !";
 }
 
+void shopping ::edit()
+{
+    fstream data,data1;
+    int pkey;
+    int token =0;
+    int c;
+    float p;
+    float d;
+    string n;
+
+    cout<<"\n\t\t\t Modify the recoard";
+    cout<<"\n\t\t\t Project code :";
+    cin>>pkey;
+
+    data.open("database.text",ios::in);
+    if(!idea)
+    {
+        cout<<"\n\nFile doesn't exist!";
+    }
+    else{
+        data1.open("database.txt",ios::app | ios::out);
+
+        data>>pcode>>pname>>price>>dis;
+        while(!data.eof())
+        {
+            if(pkey==pcode)
+            {
+                cout<<"\n\t\t Prodcut new code : ";
+                cin>>c;
+                cout<<"\n\t\t Name of the product :";
+                cin>>n;
+                cout<<"\n\t\t Price :";
+                cin>>p;
+                cout<<"\n\t\t Discount :";
+                cin>>d;
+                data1<<" "<<c<<" "<<p<<" <<"\n";
+                cout<<"\n\n\t\t Record edited ";
+                token++;
+            }
+            else
+                {
+                    data1<<" "<<pcode<<" "<<pname<<" "<<dis<<"\n";
+                }
+            data>>pname>>price>>dis;
+        }
+        data.close();
+        data1.close();
+
+        remove("database.txt");
+        rename("database1.txt","database.txt");
+
+        if(token == 0)
+        {
+            cout<<"\n\n Record not found sorry!";
+        }
+    }
+
+}
+
+void shopping::rem()
+{
+    fstream data,data1;
+    int pkey;
+    int token =0;
+    cout<<"\n\n\t Delete product";
+    cout<<"\n\n\t Product code :";
+    cin>>pkey;
+    data.open("database.txt",ios::in);
+
+    if(!idea)
+    {
+        cout<<"File doesn't exist";
+    }
+
+    else{
+        data1.open("database.txt",iso::app | iso::out);
+        data>>pcode>>pname>>price>>dis;
+        while(pcode==pkey)
+        {
+            if(pcode==pkey)
+            {
+                cout<<"\n\n\t Product deleted successfully";
+                token++;
+            }
+            else{
+                data1<<" "<<pcode<<" "<<" "<<price<<" "<<dis<<"\n";
+            }
+            data>>pcode>>pname>>price>>dis;
+        }
+        data1.close();
+        data1.close();
+        
+        re
+
+    }
+}
+
 int main() {
     shopping shop;
     shop.menu();
